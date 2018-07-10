@@ -8,14 +8,20 @@
 
 import UIKit
 
+import Parse
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        do {
+            try Parse.setupWithConfiguration(fromPlist: "Info")
+        } catch {
+            Alert.present(withTitle: "Error while loading Parse configuration from Info.plist")
+        }
+        
         return true
     }
 

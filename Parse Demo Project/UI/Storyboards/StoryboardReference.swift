@@ -21,6 +21,15 @@ struct StoryboardReference {
         case insertPhoneController = "InsertPhoneController"
     }
     
+    enum Popups: String, StoryboardReferenceRepresentable {
+        static var storyboardName: String {
+            return "Popups"
+        }
+        
+        case phoneValidationController = "PhoneValidationController"
+        case successPopupController = "SuccessPopupController"
+    }
+    
     enum Main: String, StoryboardReferenceRepresentable {
         static var storyboardName: String {
             return "Main"

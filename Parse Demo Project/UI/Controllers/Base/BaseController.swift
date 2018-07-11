@@ -12,7 +12,7 @@ import RxSwift
 import RxKeyboard
 
 class BaseController: UIViewController {
-    private let keyboardDisposeBag = DisposeBag()
+    private var keyboardDisposeBag = DisposeBag()
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint?
     
@@ -21,9 +21,17 @@ class BaseController: UIViewController {
         view.endEditing(true)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeKeyboardChanges()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeKeyboardChanges()
+    }
+    
+    func subscribeKeyboardChanges() {
         RxKeyboard.instance.visibleHeight
             .drive(onNext: { [weak self] (height) in
                 self?.view.setNeedsLayout()
@@ -32,6 +40,10 @@ class BaseController: UIViewController {
                     self?.view.layoutIfNeeded()
                 }
             }).disposed(by: keyboardDisposeBag)
+    }
+    
+    func unsubscribeKeyboardChanges() {
+        keyboardDisposeBag = DisposeBag()
     }
     
     func keyboardDidChange(height: CGFloat) {

@@ -11,7 +11,7 @@ import Parse
 import RxSwift
 
 extension Reactive where Base: PFFile {
-    var requestData: Single<Data> {
+    func requestData() -> Single<Data> {
         return Single.create { (observer) -> Disposable in
             (self.base as PFFile).getDataInBackground(block: { (data, error) in
                 if error != nil {
@@ -25,14 +25,13 @@ extension Reactive where Base: PFFile {
         }
     }
     
-    var requestImage: Single<UIImage> {
-        return requestData
-            .flatMap { data in
-                guard let image = UIImage(data: data) else {
-                    return Observable.error(GenericError.typeError).asSingle()
-                }
-                
-                return Observable.just(image).asSingle()
+    func requestImage() -> Single<UIImage> {
+        return requestData().flatMap { data in
+            guard let image = UIImage(data: data) else {
+                return Observable.error(GenericError.typeError).asSingle()
             }
+            
+            return Observable.just(image).asSingle()
+        }
     }
 }

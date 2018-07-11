@@ -37,6 +37,13 @@
 		D939E38C20F50A6700598FE7 /* PFFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939E38B20F50A6700598FE7 /* PFFile.swift */; };
 		D94A8D3920F4ADF2000238D7 /* PersonalDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A8D3820F4ADF2000238D7 /* PersonalDataController.swift */; };
 		D94A8D3C20F4B4F6000238D7 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A8D3B20F4B4F6000238D7 /* UIButton.swift */; };
+		D9794BDC20F65C6E0048FFA6 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9794BDB20F65C6E0048FFA6 /* SettingsController.swift */; };
+		D9794BDF20F65CE60048FFA6 /* ProfileSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9794BDE20F65CE60048FFA6 /* ProfileSettingsCell.swift */; };
+		D9974E0B20F6033700A63CC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9974E0A20F6033600A63CC1 /* GoogleService-Info.plist */; };
+		D9E47AF120F61DFE000C5324 /* Popups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E47AF020F61DFE000C5324 /* Popups.storyboard */; };
+		D9E47AF420F622FA000C5324 /* PhoneValidationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E47AF320F622FA000C5324 /* PhoneValidationController.swift */; };
+		D9E47AF620F63C2F000C5324 /* SuccessPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E47AF520F63C2F000C5324 /* SuccessPopupController.swift */; };
+		D9E47AF820F63C73000C5324 /* PopupBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E47AF720F63C73000C5324 /* PopupBaseController.swift */; };
 		FA4DD5EF505E5866759BC568 /* Pods_Parse_Demo_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9405EE8BC1E3A435A5416FD /* Pods_Parse_Demo_Project.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +81,14 @@
 		D939E38B20F50A6700598FE7 /* PFFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFFile.swift; sourceTree = "<group>"; };
 		D94A8D3820F4ADF2000238D7 /* PersonalDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataController.swift; sourceTree = "<group>"; };
 		D94A8D3B20F4B4F6000238D7 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		D9794BDB20F65C6E0048FFA6 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		D9794BDE20F65CE60048FFA6 /* ProfileSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsCell.swift; sourceTree = "<group>"; };
+		D9974E0920F6006000A63CC1 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		D9974E0A20F6033600A63CC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D9E47AF020F61DFE000C5324 /* Popups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Popups.storyboard; sourceTree = "<group>"; };
+		D9E47AF320F622FA000C5324 /* PhoneValidationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneValidationController.swift; sourceTree = "<group>"; };
+		D9E47AF520F63C2F000C5324 /* SuccessPopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPopupController.swift; sourceTree = "<group>"; };
+		D9E47AF720F63C73000C5324 /* PopupBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupBaseController.swift; sourceTree = "<group>"; };
 		EE06F9783FB28E29D723943C /* Pods-Parse Demo Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parse Demo Project.release.xcconfig"; path = "Pods/Target Support Files/Pods-Parse Demo Project/Pods-Parse Demo Project.release.xcconfig"; sourceTree = "<group>"; };
 		F9405EE8BC1E3A435A5416FD /* Pods_Parse_Demo_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Parse_Demo_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -125,7 +140,9 @@
 				7A9E027320EE076500E5F0E0 /* Utils */,
 				7A9E027B20EE0E9F00E5F0E0 /* UI */,
 				7A9E025C20EE001B00E5F0E0 /* AppDelegate.swift */,
+				D9974E0920F6006000A63CC1 /* Bridging-Header.h */,
 				7A9E026320EE001D00E5F0E0 /* Assets.xcassets */,
+				D9974E0A20F6033600A63CC1 /* GoogleService-Info.plist */,
 				7A9E026820EE001D00E5F0E0 /* Info.plist */,
 			);
 			path = "Parse Demo Project";
@@ -152,8 +169,6 @@
 		7A9E027620EE08E000E5F0E0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				7A9E028720EE31D500E5F0E0 /* UIView.swift */,
-				7A9E028520EE31C100E5F0E0 /* CGPoint.swift */,
 				7A9E028320EE31B400E5F0E0 /* String.swift */,
 				7A9E027420EE078400E5F0E0 /* ParseClientConfiguration.swift */,
 				7A9E027720EE08ED00E5F0E0 /* Parse.swift */,
@@ -165,6 +180,7 @@
 		7A9E027B20EE0E9F00E5F0E0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D9794BDD20F65CDC0048FFA6 /* Cells */,
 				D94A8D3A20F4B4EB000238D7 /* Extensions */,
 				7A9E029420EE4A0000E5F0E0 /* Utils */,
 				7A9E028220EE319100E5F0E0 /* Views */,
@@ -177,7 +193,9 @@
 		7A9E027C20EE0EAA00E5F0E0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D9794BDA20F65C650048FFA6 /* Main */,
 				7A9E028920EE3E1600E5F0E0 /* Base */,
+				D9E47AF220F622EF000C5324 /* Popups */,
 				7A9E029D20EE51A200E5F0E0 /* Onboarding */,
 				7A9E029B20EE518900E5F0E0 /* MainTabBarController.swift */,
 			);
@@ -191,6 +209,7 @@
 				7A9E026520EE001D00E5F0E0 /* LaunchScreen.storyboard */,
 				7A9E026020EE001B00E5F0E0 /* Onboarding.storyboard */,
 				7A9E029720EE4A6E00E5F0E0 /* Main.storyboard */,
+				D9E47AF020F61DFE000C5324 /* Popups.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -198,6 +217,8 @@
 		7A9E028220EE319100E5F0E0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7A9E028520EE31C100E5F0E0 /* CGPoint.swift */,
+				7A9E028720EE31D500E5F0E0 /* UIView.swift */,
 				7A9E027F20EE318600E5F0E0 /* UIFloatTextFieldController.swift */,
 				7A9E027E20EE318600E5F0E0 /* UILoadButton.swift */,
 			);
@@ -249,6 +270,32 @@
 				D939E37E20F4D73F00598FE7 /* UIColor.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D9794BDA20F65C650048FFA6 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D9794BDB20F65C6E0048FFA6 /* SettingsController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		D9794BDD20F65CDC0048FFA6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D9794BDE20F65CE60048FFA6 /* ProfileSettingsCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D9E47AF220F622EF000C5324 /* Popups */ = {
+			isa = PBXGroup;
+			children = (
+				D9E47AF720F63C73000C5324 /* PopupBaseController.swift */,
+				D9E47AF320F622FA000C5324 /* PhoneValidationController.swift */,
+				D9E47AF520F63C2F000C5324 /* SuccessPopupController.swift */,
+			);
+			path = Popups;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,8 +360,10 @@
 			files = (
 				7A9E026720EE001D00E5F0E0 /* LaunchScreen.storyboard in Resources */,
 				7A9E026420EE001D00E5F0E0 /* Assets.xcassets in Resources */,
+				D9974E0B20F6033700A63CC1 /* GoogleService-Info.plist in Resources */,
 				7A9E026220EE001B00E5F0E0 /* Onboarding.storyboard in Resources */,
 				7A9E029820EE4A6E00E5F0E0 /* Main.storyboard in Resources */,
+				D9E47AF120F61DFE000C5324 /* Popups.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +378,8 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Parse Demo Project/Pods-Parse Demo Project-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxKeyboard/RxKeyboard.framework",
@@ -337,6 +388,8 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKeyboard.framework",
@@ -378,9 +431,14 @@
 				7A9E027120EE047300E5F0E0 /* GenericError.swift in Sources */,
 				7A9E027820EE08ED00E5F0E0 /* Parse.swift in Sources */,
 				7A9E028D20EE3E9100E5F0E0 /* OnboardingBaseController.swift in Sources */,
+				D9794BDC20F65C6E0048FFA6 /* SettingsController.swift in Sources */,
 				7A9E029120EE414B00E5F0E0 /* User.swift in Sources */,
 				7A9E028B20EE3E2500E5F0E0 /* BaseController.swift in Sources */,
+				D9E47AF620F63C2F000C5324 /* SuccessPopupController.swift in Sources */,
 				D939E38A20F507B100598FE7 /* InsertPhoneController.swift in Sources */,
+				D9794BDF20F65CE60048FFA6 /* ProfileSettingsCell.swift in Sources */,
+				D9E47AF820F63C73000C5324 /* PopupBaseController.swift in Sources */,
+				D9E47AF420F622FA000C5324 /* PhoneValidationController.swift in Sources */,
 				7A9E028F20EE3F0D00E5F0E0 /* RegisterController.swift in Sources */,
 				7A9E028420EE31B400E5F0E0 /* String.swift in Sources */,
 				7A9E029A20EE4B7200E5F0E0 /* Navigation.swift in Sources */,
@@ -552,6 +610,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ro.iliemarius.Parse-Demo-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Parse Demo Project/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -572,6 +631,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ro.iliemarius.Parse-Demo-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Parse Demo Project/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -14,12 +14,11 @@ class MainTabBarController: UITabBarController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let user = User.current()!
-        if user.isFirstLogin {
+        if User.current()!.isFirstLogin {
             let firstStepController = StoryboardReference.Onboarding.instantiate(viewController: .firstLoginNavigationController)
             firstStepController.modalPresentationStyle = .overCurrentContext
             
-            present(firstStepController, animated: true, completion: nil)
+            present(firstStepController, animated: true)
         }
     }
     

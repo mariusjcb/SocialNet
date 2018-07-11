@@ -26,8 +26,18 @@ class LoginController: OnboardingBaseController {
         let task = User.getCurrentUserInBackground()
         task.continueOnSuccessWith { [weak self] (userTask) -> Any? in
             if userTask.isCompleted {
+                guard let user = userTask.result else {
+                    return nil
+                }
+                
+                do {
+                    try user.fetch()
+                } catch {
+                    Alert.present(withTitle: error.localizedDescription)
+                }
+                
                 DispatchQueue.main.async {
-                    self?.didReceiveLoginResponse(userTask.result, nil)
+                    self?.didReceiveLoginResponse(user, nil)
                 }
             }
             

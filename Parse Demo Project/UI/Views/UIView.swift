@@ -6,8 +6,8 @@
 //  Copyright © 2017 Marius Ilie. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import RxSwift
 
 extension UIView {
     func fadeIn(withDuration duration: TimeInterval = 0.2) {

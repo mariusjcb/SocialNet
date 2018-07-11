@@ -12,25 +12,36 @@ import RxCocoa
 import Parse
 
 class User: PFUser {
-    fileprivate(set) var firstName: String?
-    fileprivate(set) var lastName: String?
-    fileprivate(set) var phone: String?
-    fileprivate(set) var profilePicture: PFFile?
+    @NSManaged fileprivate(set) var firstName: String?
+    @NSManaged fileprivate(set) var lastName: String?
+    @NSManaged fileprivate(set) var phone: String?
+    @NSManaged fileprivate(set) var profilePicture: PFFile?
     
-    fileprivate(set) var isFirstLogin: Bool = true
+    @NSManaged var isFirstLogin: Bool
+    
+    override var parseClassName: String {
+        return super.parseClassName
+    }
 }
 
 extension User {
-    func save(firstName: String, lastName: String, profilePicture: UIImage, block: @escaping PFBooleanResultBlock) throws {
+    func save(firstName: String, lastName: String, profilePicture: UIImage, block: @escaping PFBooleanResultBlock) {
         self.firstName = firstName
         self.lastName = lastName
         self.profilePicture = PFFile(data: UIImagePNGRepresentation(profilePicture)!)
         
-        self.saveInBackground(block: block)
+        self.profilePicture?.saveInBackground(block: { [weak self] success, error in
+            guard success else {
+                block(false, error)
+                return
+            }
+            
+            self?.saveEventually(block)
+        })
     }
     
-    func save(phoneNumber: String, block: @escaping PFBooleanResultBlock) throws {
+    func save(phoneNumber: String, block: @escaping PFBooleanResultBlock) {
         self.phone = phoneNumber
-        self.saveInBackground(block: block)
+        self.saveEventually(block)
     }
 }

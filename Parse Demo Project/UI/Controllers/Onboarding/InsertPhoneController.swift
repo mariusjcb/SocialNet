@@ -24,27 +24,62 @@ class InsertPhoneController: BaseController {
         super.viewDidLoad()
         
         nameLabel.text = currentUser.lastName! + " " + currentUser.firstName!
-        currentUser.profilePicture!.rx.requestImage
+        currentUser.profilePicture!.rx.requestImage()
             .asObservable()
             .bind(to: profileImageView.rx.image)
             .disposed(by: disposeBag)
         
         phoneNumberTextField.rx.text.orEmpty
             .map { !$0.isEmpty }
+            .do(onNext: { active in
+                if active {
+                    self.sendButton.backgroundColor = .buttonEnabledColor
+                } else {
+                    self.sendButton.backgroundColor = .buttonDisabledColor
+                }
+            })
             .bind(to: sendButton.rx.isEnabled)
             .disposed(by: disposeBag)
     }
     
-    @IBAction private func sendDidTap() {
-        let phoneNumber = phoneNumberTextField.text!
+    private func registerFirstUserLogin() {
+        let currentUser = User.current()
+        currentUser!.isFirstLogin = false
         
-        do {
-            try currentUser.save(phoneNumber: phoneNumber) { [weak self] _, _ in
-                self?.sendButton.animateOut()
+        currentUser!.saveEventually()
+        
+        let successPopup = StoryboardReference.Popups.instantiate(viewController: .successPopupController) as! SuccessPopupController
+        successPopup.promptPopup()
+            .dispose()
+    }
+    
+    private func validatePhoneNumber(withId verificationId: String) {
+        let phoneNumber = phoneNumberTextField.text!
+        let validationPopup = StoryboardReference.Popups.instantiate(viewController: .phoneValidationController) as! PhoneValidationController
+        
+        unsubscribeKeyboardChanges()
+        validationPopup.promptValidation(for: phoneNumber, verificationId: verificationId, rootController: self)
+            .subscribe(onNext: { [weak self] in
+                self?.subscribeKeyboardChanges()
+                
+                let handler = self?.registerFirstUserLogin
+                self?.dismiss(animated: true, completion: handler)
+            }).disposed(by: disposeBag)
+    }
+    
+    @IBAction private func sendDidTap() {
+        view.endEditing(true)
+        
+        let phoneNumber = phoneNumberTextField.text!
+        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { [weak self] (verificationID, error) in
+            self?.sendButton.animateOut()
+            
+            if let error = error {
+                Alert.present(withTitle: error.localizedDescription, rootController: self)
+                return
             }
-        } catch {
-            sendButton.animateOut()
-            Alert.present(withTitle: error.localizedDescription)
+            
+            self?.validatePhoneNumber(withId: verificationID!)
         }
     }
 }

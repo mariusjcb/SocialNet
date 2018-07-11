@@ -79,14 +79,14 @@ class PersonalDataController: BaseController, UINavigationControllerDelegate {
         let lastName = lastNameTextField.text!
         let profileImage = profileImageView.image!
         
-        do {
-            try User.current()?.save(firstName: firstName, lastName: lastName, profilePicture: profileImage) { [weak self] _, _ in
-                self?.continueButton.animateOut()
+        User.current()?.save(firstName: firstName, lastName: lastName, profilePicture: profileImage) { [weak self] success, error in
+            self?.continueButton.animateOut()
+            
+            if success {
                 self?.performSegue(withIdentifier: Segues.toInsertPhoneNumber.rawValue, sender: nil)
+            } else {
+                Alert.present(withTitle: error!.localizedDescription, rootController: self)
             }
-        } catch {
-            continueButton.animateOut()
-            Alert.present(withTitle: error.localizedDescription)
         }
     }
 }

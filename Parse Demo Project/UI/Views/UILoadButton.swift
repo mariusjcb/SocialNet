@@ -67,6 +67,7 @@ import UIKit
     }
     
     func animateIn() {
+        self.isEnabled = false
         spinnerStatus = .active
         
         self.spinnerView?.transform = CGAffineTransform.init(scaleX: 0, y: 0)
@@ -80,6 +81,7 @@ import UIKit
     }
     
     func animateOut() {
+        self.isEnabled = true
         spinnerStatus = .inactive
         
         self.buttonTitleLabel?.transform = CGAffineTransform.init(scaleX: 2, y: 2)

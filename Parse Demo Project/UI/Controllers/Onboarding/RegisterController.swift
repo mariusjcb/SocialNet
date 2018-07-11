@@ -44,7 +44,7 @@ class RegisterController: OnboardingBaseController {
         
         user.username = usernameTextField.text!
         user.password = passwordTextField.text!
-        user.email = passwordTextField.text!
+        user.email = emailTextField.text!
         
         user.signUpInBackground(block: didreceiveSignUpResponse)
     }

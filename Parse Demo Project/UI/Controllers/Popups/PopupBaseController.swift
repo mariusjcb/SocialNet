@@ -15,6 +15,11 @@ class PopupBaseController: BaseController {
     
     @IBOutlet private weak var contentViewMask: UIView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addContentDropShadow()
+    }
+    
     func promptPopup(with rootController: UIViewController? = nil, modalStyle: UIModalPresentationStyle = .overCurrentContext, modalTransition: UIModalTransitionStyle = .crossDissolve) -> PublishSubject<Void> {
         self.modalPresentationStyle = modalStyle
         self.modalTransitionStyle = modalTransition

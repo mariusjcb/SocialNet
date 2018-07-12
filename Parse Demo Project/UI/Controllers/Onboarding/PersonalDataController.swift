@@ -17,6 +17,7 @@ private enum Segues: String {
 
 class PersonalDataController: BaseController, UINavigationControllerDelegate {
     private var disposeBag = DisposeBag()
+    private var firstStepsPresented = false
     
     @IBOutlet fileprivate weak var usernameLabel: UILabel!
     @IBOutlet fileprivate weak var profileImageView: UIImageView!
@@ -27,8 +28,22 @@ class PersonalDataController: BaseController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        usernameLabel.text = User.current()!.username
+        User.rx.currentUser.subscribe(onNext: { [weak self] user in
+            self?.usernameLabel.text = user?.username ?? "unknown"
+        }).disposed(by: disposeBag)
+        
         enableButtonActivation()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !firstStepsPresented {
+            let successPopup = StoryboardReference.Popups.instantiate(viewController: .successPopupController) as! SuccessPopupController
+            successPopup.promptSuccess(message: "Please provide some personal informations to complete the profile settings.", title: "Great job!", rootController: self)
+            
+            firstStepsPresented = true
+        }
     }
     
     private func enableButtonActivation() {
@@ -88,6 +103,11 @@ class PersonalDataController: BaseController, UINavigationControllerDelegate {
                 Alert.present(withTitle: error!.localizedDescription, rootController: self)
             }
         }
+    }
+    
+    @IBAction func logoutDidTap(_ sender: UIBarButtonItem) {
+        User.logOutInBackground()
+        NavigationManager.shared.rootController = StoryboardReference.Onboarding.instantiate(viewController: .loginNavigationController)
     }
 }
 

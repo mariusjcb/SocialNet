@@ -20,34 +20,9 @@ class LoginController: OnboardingBaseController {
     
     @IBOutlet fileprivate weak var sendButton: UILoadButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let task = User.getCurrentUserInBackground()
-        task.continueOnSuccessWith { [weak self] (userTask) -> Any? in
-            if userTask.isCompleted {
-                guard let user = userTask.result else {
-                    return nil
-                }
-                
-                do {
-                    try user.fetch()
-                } catch {
-                    Alert.present(withTitle: error.localizedDescription)
-                }
-                
-                DispatchQueue.main.async {
-                    self?.didReceiveLoginResponse(user, nil)
-                }
-            }
-            
-            return nil
-        }
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        hidePageDetailsIfOvercome(position: usernameTextField.frame.origin.y)
+        hidePageDetailsIfOvercome(position: usernameTextField.frame.origin.y - 20)
     }
     
     override func keyboardDidChange(height: CGFloat) {
@@ -58,7 +33,7 @@ class LoginController: OnboardingBaseController {
         sendButton.animateOut()
         
         if error != nil {
-            Alert.present(withTitle: error!.localizedDescription)
+            Alert.present(withTitle: error!.localizedDescription, rootController: self)
         } else {
             let mainController = StoryboardReference.Main.instantiate(viewController: .mainTabBarController)
             NavigationManager.shared.rootController = mainController
@@ -66,6 +41,7 @@ class LoginController: OnboardingBaseController {
     }
     
     @IBAction func loginDidTap() {
+        view.endEditing(true)
         User.logInWithUsername(inBackground: usernameTextField.text!, password: passwordTextField.text!, block: didReceiveLoginResponse)
     }
     

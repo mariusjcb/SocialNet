@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import RxSwift
 
 private enum CellId: String {
     case profileSettings = "ProfileSettingsCell"
 }
 
 class SettingsController: UITableViewController {
+    private var volatileDisposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     @IBOutlet weak var profileSettingsCell: ProfileSettingsCell!
     
@@ -20,7 +23,22 @@ class SettingsController: UITableViewController {
         super.viewDidLoad()
         
         profileSettingsCell.delegate = self
-        profileSettingsCell.load(user: User.current()!)
+        
+        User.rx.currentUser.subscribe(onNext: { [weak self] (user) in
+            self?.volatileDisposeBag = DisposeBag()
+            self?.loadProfileCell(for: user)
+        }).disposed(by: disposeBag)
+    }
+    
+    private func loadProfileCell(for user: User?) {
+        guard let user = user else {
+            return
+        }
+        
+        user.profilePicture?.rx.requestImage()
+            .subscribe(onSuccess: { [weak self] image in
+                self?.profileSettingsCell.load(user: user, profileImage: image)
+            }).disposed(by: volatileDisposeBag)
     }
     
 }
@@ -28,6 +46,6 @@ class SettingsController: UITableViewController {
 extension SettingsController: ProfileSettingsCellDelegate {
     func logoutDidTap() {
         User.logOut()
-        NavigationManager.shared.rootController = StoryboardReference.Onboarding.instantiate(viewController: .loginController)
+        NavigationManager.shared.rootController = StoryboardReference.Onboarding.instantiate(viewController: .loginNavigationController)
     }
 }

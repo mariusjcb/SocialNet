@@ -15,8 +15,15 @@ class PhoneValidationController: PopupBaseController {
     private var verificationId: String!
     private var phoneNumber: String!
     
+    private var currentUser: User? {
+        do {
+            return try User.rx.currentUser.value()
+        } catch {
+            return nil
+        }
+    }
+    
     private var disposeBag = DisposeBag()
-    private let currentUser = User.current()!
     
     @IBOutlet fileprivate weak var profileImageView: UIImageView!
     @IBOutlet fileprivate weak var phoneLabel: UILabel!
@@ -27,7 +34,7 @@ class PhoneValidationController: PopupBaseController {
         super.viewDidLoad()
         
         phoneLabel.text = phoneNumber
-        currentUser.profilePicture!.rx.requestImage()
+        currentUser?.profilePicture!.rx.requestImage()
             .asObservable()
             .bind(to: profileImageView.rx.image)
             .disposed(by: disposeBag)
@@ -57,7 +64,7 @@ class PhoneValidationController: PopupBaseController {
     }
     
     private func savePhoneNumber() {
-        currentUser.save(phoneNumber: phoneNumber) { [weak self] success, error in
+        currentUser?.save(phoneNumber: phoneNumber) { [weak self] success, error in
             self?.sendButton.animateOut()
             if success {
                 self?.publishSubject.onNext(())
@@ -85,8 +92,6 @@ class PhoneValidationController: PopupBaseController {
                 self?.publishSubject.onCompleted()
                 
                 Alert.present(withTitle: error.localizedDescription, rootController: self)
-                self?.dismiss(animated: false, completion: nil)
-                
                 return
             }
             

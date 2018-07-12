@@ -21,11 +21,14 @@ class SuccessPopupController: PopupBaseController {
         print("Keyboard interactions disabled on success popup")
     }
     
+    @discardableResult
     func promptSuccess(message: String, title: String, rootController: UIViewController? = nil) -> PublishSubject<Void> {
+        loadViewIfNeeded()
+        
         self.titleLabel.text = title
         self.descriptionLabel.text = message
         
-        return promptPopup()
+        return promptPopup(with: rootController)
     }
     
     @IBAction func successDidTap() {

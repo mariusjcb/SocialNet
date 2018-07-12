@@ -12,6 +12,7 @@ import RxCocoa
 import Parse
 
 class RegisterController: OnboardingBaseController {
+    private let disposeBag = DisposeBag()
     
     @IBOutlet fileprivate weak var usernameTextField: UITextField!
     @IBOutlet fileprivate weak var passwordTextField: UITextField!
@@ -35,13 +36,14 @@ class RegisterController: OnboardingBaseController {
             let mainController = StoryboardReference.Main.instantiate(viewController: .mainTabBarController)
             NavigationManager.shared.rootController = mainController
         } else {
-            Alert.present(withTitle: error!.localizedDescription)
+            Alert.present(withTitle: error!.localizedDescription, rootController: self)
         }
     }
     
     @IBAction func signupDidTap() {
-        let user = User()
+        view.endEditing(true)
         
+        let user = User()
         user.username = usernameTextField.text!
         user.password = passwordTextField.text!
         user.email = emailTextField.text!

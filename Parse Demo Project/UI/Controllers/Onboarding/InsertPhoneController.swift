@@ -13,7 +13,14 @@ import RxCocoa
 
 class InsertPhoneController: BaseController {
     private var disposeBag = DisposeBag()
-    private let currentUser = User.current()!
+    
+    private var currentUser: User? {
+        do {
+            return try User.rx.currentUser.value()
+        } catch {
+            return nil
+        }
+    }
     
     @IBOutlet fileprivate weak var nameLabel: UILabel!
     @IBOutlet fileprivate weak var profileImageView: UIImageView!
@@ -23,12 +30,13 @@ class InsertPhoneController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameLabel.text = currentUser.lastName! + " " + currentUser.firstName!
-        currentUser.profilePicture!.rx.requestImage()
+        nameLabel.text = (currentUser?.lastName ?? "Unknown") + " " + (currentUser?.firstName! ?? "user")
+        currentUser?.profilePicture!.rx.requestImage()
             .asObservable()
             .bind(to: profileImageView.rx.image)
             .disposed(by: disposeBag)
         
+        phoneNumberTextField.placeholder = currentUser?.phone ?? "Phone Number"
         phoneNumberTextField.rx.text.orEmpty
             .map { !$0.isEmpty }
             .do(onNext: { active in
@@ -43,14 +51,26 @@ class InsertPhoneController: BaseController {
     }
     
     private func registerFirstUserLogin() {
-        let currentUser = User.current()
-        currentUser!.isFirstLogin = false
-        
-        currentUser!.saveEventually()
+        currentUser?.hasDoneFirstSteps = true
+        currentUser?.saveEventually()
         
         let successPopup = StoryboardReference.Popups.instantiate(viewController: .successPopupController) as! SuccessPopupController
         successPopup.promptPopup()
             .dispose()
+    }
+    
+    private func sendVerificationCode() {
+        let phoneNumber = phoneNumberTextField.text!
+        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { [weak self] (verificationID, error) in
+            self?.sendButton.animateOut()
+            
+            if let error = error {
+                Alert.present(withTitle: error.localizedDescription, rootController: self)
+                return
+            }
+            
+            self?.validatePhoneNumber(withId: verificationID!)
+        }
     }
     
     private func validatePhoneNumber(withId verificationId: String) {
@@ -71,15 +91,21 @@ class InsertPhoneController: BaseController {
         view.endEditing(true)
         
         let phoneNumber = phoneNumberTextField.text!
-        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { [weak self] (verificationID, error) in
-            self?.sendButton.animateOut()
+        guard phoneNumber != currentUser?.phone else {
+            sendButton.animateOut()
+            Alert.present(withTitle: "The old phone number is also your new number? Mhm, Nice.", rootController: self)
             
-            if let error = error {
-                Alert.present(withTitle: error.localizedDescription, rootController: self)
-                return
-            }
-            
-            self?.validatePhoneNumber(withId: verificationID!)
+            return
         }
+        
+        User.query()?.whereKey(#keyPath(User.phone), equalTo: phoneNumber)
+            .findObjectsInBackground(block: { [weak self] objects, error in
+                if objects != nil {
+                    self?.sendButton.animateOut()
+                    Alert.present(withTitle: "Phone number taken. Please insert another one.", rootController: self)
+                } else {
+                    self?.sendVerificationCode()
+                }
+            })
     }
 }

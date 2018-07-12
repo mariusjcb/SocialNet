@@ -17,14 +17,14 @@ class User: PFUser {
     @NSManaged fileprivate(set) var phone: String?
     @NSManaged fileprivate(set) var profilePicture: PFFile?
     
-    @NSManaged var isFirstLogin: Bool
-    
-    override var parseClassName: String {
-        return super.parseClassName
-    }
+    @NSManaged var hasDoneFirstSteps: Bool
 }
 
 extension User {
+    override var parseClassName: String {
+        return super.parseClassName
+    }
+    
     func save(firstName: String, lastName: String, profilePicture: UIImage, block: @escaping PFBooleanResultBlock) {
         self.firstName = firstName
         self.lastName = lastName

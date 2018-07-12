@@ -13,6 +13,7 @@ struct StoryboardReference {
             return "Onboarding"
         }
         
+        case loginNavigationController = "LoginNavigationController"
         case loginController = "LoginController"
         case registerController = "RegisterController"
         

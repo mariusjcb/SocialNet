@@ -32,9 +32,11 @@ extension NewsController: UISearchBarDelegate {
         fetchedUsers = [User]()
         searching = true
         
+        // Search USERS
+        
         try? User.query([
-                .firstName: .containsAll(searchText),
-                .lastName: .containsAll(searchText)
+                .firstName: .contains(searchText),
+                .lastName: .contains(searchText)
             ]).findObjectsInBackground(block: { [weak self] (success, error) in
                 self?.searching = false
                 

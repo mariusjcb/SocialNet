@@ -58,6 +58,7 @@ extension PFObject {
     }
     
     enum Conditions {
+        case contains(String)
         case notEqualTo(Any)
         case lessThan(Any)
         case lessThanEqualTo(Any)
@@ -70,7 +71,7 @@ extension PFObject {
         case within(Any)
         case geoWithin(Any)
         case geoIntersects(Any)
-        case regex(Any)
+        case regex(String)
         case text(Any)
         case exists(Any)
         case inQuery(Any)
@@ -85,6 +86,7 @@ extension PFObject {
         
         var rawValue: String {
             switch self {
+            case .contains: return PFQueryKeyRegex
             case .notEqualTo: return PFQueryKeyNotEqualTo
             case .lessThan: return PFQueryKeyLessThan
             case .lessThanEqualTo: return PFQueryKeyLessThanEqualTo
@@ -114,6 +116,7 @@ extension PFObject {
         
         var target: Any {
             switch self {
+            case .contains(let obj): return PFQueryUtilities.regexString(for: obj)
             case .notEqualTo(let obj): return obj
             case .lessThan(let obj): return obj
             case .lessThanEqualTo(let obj): return obj
@@ -126,7 +129,7 @@ extension PFObject {
             case .within(let obj): return obj
             case .geoWithin(let obj): return obj
             case .geoIntersects(let obj): return obj
-            case .regex(let obj): return obj
+            case .regex(let obj): return PFQueryUtilities.regexString(for: obj)
             case .text(let obj): return obj
             case .exists(let obj): return obj
             case .inQuery(let obj): return obj

@@ -9,6 +9,7 @@
 #import <FirebaseAuth/FirebaseAuth.h>
 #import <Parse/PFQuery.h>
 #import <Parse/PFQueryConstants.h>
+#import <Parse/PFQueryUtilities.h>
 
 @interface PFQuery (Private)
 - (instancetype)whereKey:(NSString *)key condition:(NSString *)condition object:(id)object;

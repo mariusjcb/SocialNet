@@ -9,6 +9,7 @@
 import Foundation
 
 enum GenericError: Error {
+    case invalidArgsNumber
     case typeError
     case fileNotFound
 }

@@ -12,27 +12,55 @@ import Parse
 private let ProfileCellID = "ProfileCell"
 
 class NewsController: UIViewController {
-    private var fetchedUsers = [User]()
+    fileprivate var searching = false
+    fileprivate var fetchedUsers = [User]()
     
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet fileprivate weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchDisplayController?.searchResultsTableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: ProfileCellID)
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.register(ProfileCell.Nib.instantiate(.default), forCellReuseIdentifier: ProfileCellID)
     }
 }
 
 extension NewsController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let filterFormat = "(\(\User.firstName) LIKE '*%1$@*' OR \(\User.lastName) LIKE '*%1$@*'"
-        let query = User.query(with: NSPredicate(format: filterFormat, searchText))
+        guard !searching else { return }
+        
+        fetchedUsers = [User]()
+        searching = true
+        
+        try? User.query([
+                .firstName: .containsAll(searchText),
+                .lastName: .containsAll(searchText)
+            ]).findObjectsInBackground(block: { [weak self] (success, error) in
+                self?.searching = false
+                
+                guard let users = success as? [User] else {
+                    Alert.present(withTitle: error!.localizedDescription, rootController: self)
+                    return
+                }
+                
+                self?.fetchedUsers = users
+                self?.tableView.reloadData()
+            })
+    }
+}
+
+extension NewsController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 }
 
 extension NewsController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProfileCellID, for: indexPath) as! ProfileTableViewCell
-        cell.load(name: <#T##String#>, image: <#T##UIImage#>)
+        let user = fetchedUsers[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: ProfileCellID, for: indexPath) as! ProfileCell
+        cell.load(user: user)
         
         return cell
     }

@@ -37,6 +37,15 @@
 		D939E38C20F50A6700598FE7 /* PFFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D939E38B20F50A6700598FE7 /* PFFile.swift */; };
 		D94A8D3920F4ADF2000238D7 /* PersonalDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A8D3820F4ADF2000238D7 /* PersonalDataController.swift */; };
 		D94A8D3C20F4B4F6000238D7 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A8D3B20F4B4F6000238D7 /* UIButton.swift */; };
+		D94C177020F7A18E00BB61C9 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C176F20F7A18E00BB61C9 /* NewsController.swift */; };
+		D94C177320F7A7D900BB61C9 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C177120F7A7D900BB61C9 /* ProfileCell.swift */; };
+		D94C177420F7A7D900BB61C9 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D94C177220F7A7D900BB61C9 /* ProfileCell.xib */; };
+		D94C177720F8A6A700BB61C9 /* NibInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C177620F8A6A700BB61C9 /* NibInstantiable.swift */; };
+		D94C177920F8CF1200BB61C9 /* PFSubclassing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C177820F8CF1200BB61C9 /* PFSubclassing.swift */; };
+		D94C177B20F8E0FA00BB61C9 /* PFObjectDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C177A20F8E0FA00BB61C9 /* PFObjectDemo.swift */; };
+		D94C177D20F8F59F00BB61C9 /* PFObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C177C20F8F59F00BB61C9 /* PFObject.swift */; };
+		D95D5E2820F7473300713C9D /* SplashScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95D5E2720F7473300713C9D /* SplashScreenController.swift */; };
+		D95D5E2A20F74FAB00713C9D /* User+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95D5E2920F74FAB00713C9D /* User+Rx.swift */; };
 		D9794BDC20F65C6E0048FFA6 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9794BDB20F65C6E0048FFA6 /* SettingsController.swift */; };
 		D9794BDF20F65CE60048FFA6 /* ProfileSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9794BDE20F65CE60048FFA6 /* ProfileSettingsCell.swift */; };
 		D9974E0B20F6033700A63CC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9974E0A20F6033600A63CC1 /* GoogleService-Info.plist */; };
@@ -81,6 +90,15 @@
 		D939E38B20F50A6700598FE7 /* PFFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFFile.swift; sourceTree = "<group>"; };
 		D94A8D3820F4ADF2000238D7 /* PersonalDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataController.swift; sourceTree = "<group>"; };
 		D94A8D3B20F4B4F6000238D7 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		D94C176F20F7A18E00BB61C9 /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
+		D94C177120F7A7D900BB61C9 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		D94C177220F7A7D900BB61C9 /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
+		D94C177620F8A6A700BB61C9 /* NibInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibInstantiable.swift; sourceTree = "<group>"; };
+		D94C177820F8CF1200BB61C9 /* PFSubclassing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFSubclassing.swift; sourceTree = "<group>"; };
+		D94C177A20F8E0FA00BB61C9 /* PFObjectDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFObjectDemo.swift; sourceTree = "<group>"; };
+		D94C177C20F8F59F00BB61C9 /* PFObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFObject.swift; sourceTree = "<group>"; };
+		D95D5E2720F7473300713C9D /* SplashScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenController.swift; sourceTree = "<group>"; };
+		D95D5E2920F74FAB00713C9D /* User+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Rx.swift"; sourceTree = "<group>"; };
 		D9794BDB20F65C6E0048FFA6 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		D9794BDE20F65CE60048FFA6 /* ProfileSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsCell.swift; sourceTree = "<group>"; };
 		D9974E0920F6006000A63CC1 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -152,6 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				7A9E029020EE414B00E5F0E0 /* User.swift */,
+				D95D5E2920F74FAB00713C9D /* User+Rx.swift */,
+				D94C177A20F8E0FA00BB61C9 /* PFObjectDemo.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -173,6 +193,8 @@
 				7A9E027420EE078400E5F0E0 /* ParseClientConfiguration.swift */,
 				7A9E027720EE08ED00E5F0E0 /* Parse.swift */,
 				D939E38B20F50A6700598FE7 /* PFFile.swift */,
+				D94C177820F8CF1200BB61C9 /* PFSubclassing.swift */,
+				D94C177C20F8F59F00BB61C9 /* PFObject.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -197,7 +219,6 @@
 				7A9E028920EE3E1600E5F0E0 /* Base */,
 				D9E47AF220F622EF000C5324 /* Popups */,
 				7A9E029D20EE51A200E5F0E0 /* Onboarding */,
-				7A9E029B20EE518900E5F0E0 /* MainTabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -251,6 +272,7 @@
 				7A9E028E20EE3F0D00E5F0E0 /* RegisterController.swift */,
 				D94A8D3820F4ADF2000238D7 /* PersonalDataController.swift */,
 				D939E38920F507B100598FE7 /* InsertPhoneController.swift */,
+				D95D5E2720F7473300713C9D /* SplashScreenController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -272,10 +294,21 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		D94C177520F7A7DD00BB61C9 /* ProfileTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D94C177120F7A7D900BB61C9 /* ProfileCell.swift */,
+				D94C177220F7A7D900BB61C9 /* ProfileCell.xib */,
+			);
+			path = ProfileTableViewCell;
+			sourceTree = "<group>";
+		};
 		D9794BDA20F65C650048FFA6 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				7A9E029B20EE518900E5F0E0 /* MainTabBarController.swift */,
 				D9794BDB20F65C6E0048FFA6 /* SettingsController.swift */,
+				D94C176F20F7A18E00BB61C9 /* NewsController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -283,7 +316,9 @@
 		D9794BDD20F65CDC0048FFA6 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D94C177620F8A6A700BB61C9 /* NibInstantiable.swift */,
 				D9794BDE20F65CE60048FFA6 /* ProfileSettingsCell.swift */,
+				D94C177520F7A7DD00BB61C9 /* ProfileTableViewCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -361,6 +396,7 @@
 				7A9E026720EE001D00E5F0E0 /* LaunchScreen.storyboard in Resources */,
 				7A9E026420EE001D00E5F0E0 /* Assets.xcassets in Resources */,
 				D9974E0B20F6033700A63CC1 /* GoogleService-Info.plist in Resources */,
+				D94C177420F7A7D900BB61C9 /* ProfileCell.xib in Resources */,
 				7A9E026220EE001B00E5F0E0 /* Onboarding.storyboard in Resources */,
 				7A9E029820EE4A6E00E5F0E0 /* Main.storyboard in Resources */,
 				D9E47AF120F61DFE000C5324 /* Popups.storyboard in Resources */,
@@ -380,6 +416,7 @@
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxKeyboard/RxKeyboard.framework",
@@ -390,6 +427,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKeyboard.framework",
@@ -426,20 +464,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A9E029620EE4A1100E5F0E0 /* StoryboardReference.swift in Sources */,
+				D94C177B20F8E0FA00BB61C9 /* PFObjectDemo.swift in Sources */,
 				7A9E028620EE31C100E5F0E0 /* CGPoint.swift in Sources */,
 				7A9E029C20EE518900E5F0E0 /* MainTabBarController.swift in Sources */,
 				7A9E027120EE047300E5F0E0 /* GenericError.swift in Sources */,
 				7A9E027820EE08ED00E5F0E0 /* Parse.swift in Sources */,
 				7A9E028D20EE3E9100E5F0E0 /* OnboardingBaseController.swift in Sources */,
+				D95D5E2820F7473300713C9D /* SplashScreenController.swift in Sources */,
+				D94C177720F8A6A700BB61C9 /* NibInstantiable.swift in Sources */,
 				D9794BDC20F65C6E0048FFA6 /* SettingsController.swift in Sources */,
+				D94C177320F7A7D900BB61C9 /* ProfileCell.swift in Sources */,
 				7A9E029120EE414B00E5F0E0 /* User.swift in Sources */,
 				7A9E028B20EE3E2500E5F0E0 /* BaseController.swift in Sources */,
 				D9E47AF620F63C2F000C5324 /* SuccessPopupController.swift in Sources */,
 				D939E38A20F507B100598FE7 /* InsertPhoneController.swift in Sources */,
+				D94C177020F7A18E00BB61C9 /* NewsController.swift in Sources */,
+				D94C177D20F8F59F00BB61C9 /* PFObject.swift in Sources */,
 				D9794BDF20F65CE60048FFA6 /* ProfileSettingsCell.swift in Sources */,
 				D9E47AF820F63C73000C5324 /* PopupBaseController.swift in Sources */,
 				D9E47AF420F622FA000C5324 /* PhoneValidationController.swift in Sources */,
 				7A9E028F20EE3F0D00E5F0E0 /* RegisterController.swift in Sources */,
+				D95D5E2A20F74FAB00713C9D /* User+Rx.swift in Sources */,
 				7A9E028420EE31B400E5F0E0 /* String.swift in Sources */,
 				7A9E029A20EE4B7200E5F0E0 /* Navigation.swift in Sources */,
 				D939E37D20F4CD3900598FE7 /* ObservableNSLayoutConstaint.swift in Sources */,
@@ -452,6 +497,7 @@
 				7A9E025D20EE001B00E5F0E0 /* AppDelegate.swift in Sources */,
 				7A9E027A20EE0B2B00E5F0E0 /* Alert.swift in Sources */,
 				D939E38C20F50A6700598FE7 /* PFFile.swift in Sources */,
+				D94C177920F8CF1200BB61C9 /* PFSubclassing.swift in Sources */,
 				7A9E028120EE318600E5F0E0 /* UIFloatTextFieldController.swift in Sources */,
 				D94A8D3C20F4B4F6000238D7 /* UIButton.swift in Sources */,
 				7A9E028020EE318600E5F0E0 /* UILoadButton.swift in Sources */,

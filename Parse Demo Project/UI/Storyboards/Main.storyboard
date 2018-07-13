@@ -104,6 +104,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="5uS-ub-VUv" id="0yO-cv-kj5"/>
+                                    <outlet property="delegate" destination="5uS-ub-VUv" id="1sp-wE-WoU"/>
+                                </connections>
                             </tableView>
                             <searchBar contentMode="redraw" placeholder="Find people..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUi-d9-NgV">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
@@ -129,20 +133,10 @@
                     <navigationItem key="navigationItem" title="News" id="kQL-fk-t9w"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
-                        <outlet property="searchDisplayController" destination="Nro-A1-Mcs" id="bUM-j4-Nkd"/>
                         <outlet property="tableView" destination="mvt-UV-QT4" id="9Ps-6o-R6c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ler-6F-HhJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="Nro-A1-Mcs">
-                    <connections>
-                        <outlet property="delegate" destination="5uS-ub-VUv" id="Ok8-45-yOA"/>
-                        <outlet property="searchBar" destination="PUi-d9-NgV" id="p5Y-b9-nvS"/>
-                        <outlet property="searchContentsController" destination="5uS-ub-VUv" id="2uw-pg-oPm"/>
-                        <outlet property="searchResultsDataSource" destination="5uS-ub-VUv" id="Q10-vz-liu"/>
-                        <outlet property="searchResultsDelegate" destination="5uS-ub-VUv" id="0bX-Bb-NxH"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1100" y="-564.46776611694156"/>
         </scene>
@@ -168,7 +162,7 @@
             <objects>
                 <tableViewController id="mXn-X6-3ij" customClass="SettingsController" customModule="Parse_Demo_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RYB-FF-pKh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

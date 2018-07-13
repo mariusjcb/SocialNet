@@ -21,4 +21,13 @@ extension UIView {
             self.alpha = 0.0
         })
     }
+    
+    func addContentDropShadow() {
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowOffset = CGSize(width: 3, height: 3)
+        self.layer.shadowRadius = 5
+        self.layer.masksToBounds = false
+    }
 }

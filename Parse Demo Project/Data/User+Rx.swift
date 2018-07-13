@@ -11,7 +11,6 @@ import RxSwift
 import Parse
 
 extension User {
-    
     fileprivate static let currentUserSubject = BehaviorSubject<User?>(value: nil)
     
     fileprivate func pushCurrentSubjectIfNeeded() {

@@ -8,5 +8,6 @@ target 'Parse Demo Project' do
   pod 'RxKeyboard'
   pod 'RxCocoa'
   pod 'RxSwift'
+  pod 'Kingfisher'
   pod 'Firebase/Auth'
 end

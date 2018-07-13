@@ -98,7 +98,7 @@ class InsertPhoneController: BaseController {
             return
         }
         
-        User.query()?.whereKey(#keyPath(User.phone), equalTo: phoneNumber)
+        User.query()?.whereKey("phone", equalTo: phoneNumber)
             .findObjectsInBackground(block: { [weak self] objects, error in
                 if objects != nil {
                     self?.sendButton.animateOut()

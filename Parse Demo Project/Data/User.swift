@@ -20,6 +20,16 @@ class User: PFUser {
     @NSManaged var hasDoneFirstSteps: Bool
 }
 
+//TODO: find any another `fancy` way to do that
+extension PFKey where T: User {
+    typealias `Self` = PFKey<T>
+    
+    static var firstName: Self { return .value("firstName") }
+    static var lastName: Self { return .value("lastName") }
+    static var phone: Self { return .value("phone") }
+    static var profilePicture: Self { return .value("profilePicture") }
+}
+
 extension User {
     override var parseClassName: String {
         return super.parseClassName

@@ -17,7 +17,7 @@ class PopupBaseController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addContentDropShadow()
+        contentViewMask.addContentDropShadow()
     }
     
     func promptPopup(with rootController: UIViewController? = nil, modalStyle: UIModalPresentationStyle = .overCurrentContext, modalTransition: UIModalTransitionStyle = .crossDissolve) -> PublishSubject<Void> {
@@ -26,15 +26,5 @@ class PopupBaseController: BaseController {
         
         (rootController ?? NavigationManager.shared.rootController)?.present(self, animated: true, completion: nil)
         return publishSubject
-    }
-    
-    private func addContentDropShadow() {
-        self.contentViewMask.layer.shadowPath = UIBezierPath(roundedRect:
-            self.contentViewMask.bounds, cornerRadius: self.contentViewMask.layer.cornerRadius).cgPath
-        self.contentViewMask.layer.shadowColor = UIColor.black.cgColor
-        self.contentViewMask.layer.shadowOpacity = 0.3
-        self.contentViewMask.layer.shadowOffset = CGSize(width: 3, height: 3)
-        self.contentViewMask.layer.shadowRadius = 5
-        self.contentViewMask.layer.masksToBounds = false
     }
 }
